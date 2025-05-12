@@ -2,15 +2,21 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { useToast } from "@/hooks/use-toast"
+import { useConfetti } from "@/hooks/use-confetti"
 
 export default function Home() {
   const { toast } = useToast()
+  const { fireConfetti } = useConfetti()
 
   const showToast = () => {
     toast({
       title: "Template Toast",
       description: "This is a sample toast notification - customize it!",
     })
+  }
+  
+  const handleConfetti = () => {
+    fireConfetti()
   }
 
   return (
@@ -29,7 +35,7 @@ export default function Home() {
             This is a customizable template. Replace all content with your own using the chat interface.
           </p>
           <div className="mt-12 flex gap-4 justify-center">
-            <Button size="lg" className="px-8">Sample Button</Button>
+            <Button size="lg" className="px-8" onClick={handleConfetti}>Confetti!</Button>
             <Button size="lg" variant="outline" className="px-8" onClick={showToast}>
               Show Toast
             </Button>
@@ -91,3 +97,4 @@ export default function Home() {
     </div>
   )
 }
+
